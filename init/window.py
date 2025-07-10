@@ -55,6 +55,7 @@ while running:
 
   ###DRAW
   # Draw the rectangle
+  screen.fill(background_colour)
   pygame.draw.rect(screen, (255, 0, 0), (x, y, width, height))
 
   # UPDATE DISPLAY
