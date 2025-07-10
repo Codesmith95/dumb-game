@@ -34,13 +34,14 @@ running = True
 
 # game loop
 while running:
-
+  ###EVENTS
   # for loop through the event queue
   for event in pygame.event.get():
     # Check for QUIT event
     if event.type == pygame.QUIT:
       running = False
 
+  ###Logic
   # Get the keys that are pressed
   keys = pygame.key.get_pressed()
   if keys[pygame.K_LEFT] and x>0:
@@ -52,8 +53,9 @@ while running:
   if keys[pygame.K_DOWN] and y<600-height:
     y += vel
 
+  ###DRAW
   # Draw the rectangle
   pygame.draw.rect(screen, (255, 0, 0), (x, y, width, height))
 
-  # Update display
+  # UPDATE DISPLAY
   pygame.display.update()
