@@ -1,5 +1,6 @@
 # import the pygame module
 import pygame
+from pygame.locals import *
 
 # Define the background colour
 # using RGB color coding.
@@ -16,14 +17,17 @@ vel = 10
 # screen object(width,height)
 screen = pygame.display.set_mode((900, 600))
 
+# Clock
+clock = pygame.time.Clock()
+
 # Set the caption of the screen
 pygame.display.set_caption('Avoid the projectiles')
 
 # Fill the background colour to the screen
 screen.fill(background_colour)
 
-# Update the display using flip
-pygame.display.flip()
+# Update the display
+pygame.display.update()
 
 # Variable to keep our game loop running
 running = True
@@ -40,7 +44,7 @@ while running:
   # Get the keys that are pressed
   keys = pygame.key.get_pressed()
   if keys[pygame.K_LEFT] and x>0:
-    x -= vel
+    x -= 10
   if keys[pygame.K_RIGHT] and x<900-width:
     x += vel
   if keys[pygame.K_UP] and y>0:
@@ -50,5 +54,6 @@ while running:
 
   # Draw the rectangle
   pygame.draw.rect(screen, (255, 0, 0), (x, y, width, height))
+
+  # Update display
   pygame.display.update()
-  pygame.display.flip()
