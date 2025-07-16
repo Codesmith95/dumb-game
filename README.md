@@ -1,4 +1,4 @@
-# dumb-game
-A silly little game in Python which consists of an _Undertale_-esque combat game. It's mostly just a way to learn  coding skills.
+# The Hero of Dawnport
+The heroic adventure of a red square on its rise to power and fame (and defeating the Chaos King). It's mostly just a way to learn valuable coding skills.
 
 NOTE: Requires the PyGame library
