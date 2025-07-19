@@ -1,6 +1,8 @@
 # import the pygame module
 import pygame
 from pygame.locals import *
+# Other imports
+import math
 
 def createWindow():
   # Define the background colour
@@ -15,12 +17,19 @@ def createWindow():
   # s_width = display_info.current_w
   # s_height = display_info.current_h
 
+  # Create a background
+  map_x = -5000
+  map_y = -4000
+  map_size = (7659, 7659)
+  background_map = pygame.image.load("textures/maps/dawnport-beta-map.png")
+  map = pygame.transform.scale(background_map, map_size)
+
   # Define the properties of the player
   x = s_width / 2
   y = s_height / 2
-  width = 20
-  height = 20
-  vel = .2
+  width = 25
+  height = 25
+  vel = 10
 
   # Set the caption of the screen
   pygame.display.set_caption('The Hero of Dawnport')
@@ -52,18 +61,22 @@ def createWindow():
     ### LOGIC ###
     # Get the keys that are pressed
     keys = pygame.key.get_pressed()
-    if keys[pygame.K_LEFT] and x < s_width:
-      x -= vel
-    if keys[pygame.K_RIGHT] and x < s_width - width:
-      x += vel
-    if keys[pygame.K_UP] and y < s_height:
-      y -= vel
-    if keys[pygame.K_DOWN] and y < s_height - height:
-      y += vel
+    # Go left
+    if keys[pygame.K_LEFT] and map_x < 0:
+      map_x += vel
+    if keys[pygame.K_RIGHT] and map_x > -(7659 - s_width):
+      map_x -= vel
+    if keys[pygame.K_UP] and map_y < 0:
+      map_y += vel
+    if keys[pygame.K_DOWN] and map_y < 7659 - s_height:
+      map_y -= vel
 
     ### DRAW ###
     # Draw the background
     screen.fill(background_colour)
+
+    # Draw the map
+    screen.blit(map, (map_x, map_y))
 
     # Draw the player
     pygame.draw.rect(screen, (255, 0, 0), (x, y, width, height))
